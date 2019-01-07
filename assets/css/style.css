@@ -1,0 +1,17 @@
+body {
+  background-color: #010165;
+  margin: 0px;
+}
+
+header {
+  text-align: center;
+}
+
+.door-row {
+  text-align: center;
+}
+
+.door-frame {
+  cursor: pointer;
+  padding: 10px;
+}
