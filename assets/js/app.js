@@ -11,19 +11,29 @@ let openDoor1;
 let openDoor2;
 let openDoor3;
 
+const isBot = (door) => {
+	if (door.src === botDoorPath) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
 const isClicked = (door) => {
-	if(door.src === closedDoorPath) {
+	if (door.src === closedDoorPath) {
 		return false;
 	} else {
 		return true;
 	}
 };
 
-const playDoor = () => {
+const playDoor = (door) => {
 	numCloseDoors--;
-	if(numCloseDoors === 0) {
+	if (numCloseDoors === 0) {
 		gameOver('win');
-	};
+	} else if (isBot(door)) {
+		gameOver('lose');
+	}
 }
 
 const randomChoreDoorGenerator = () => {
@@ -47,30 +57,32 @@ const randomChoreDoorGenerator = () => {
 door1.onclick = () => {
 	if(!isClicked(doorImage1)){
 		doorImage1.src = openDoor1;
-  		playDoor();
+  		playDoor(door1);
 	};
 };
 
 door2.onclick = () => {
 	if(!isClicked(doorImage2)){
   		doorImage2.src = openDoor2;
-  		playDoor();
+  		playDoor(door2);
   	};
 };
 
 door3.onclick = () => {
 	if(!isClicked(doorImage3)){
 	  	doorImage3.src = openDoor3;
- 	  	playDoor();
+ 	  	playDoor(door3);
  	};
 };
 
 const gameOver = (status) => {
 	if (status === 'win') {
 		startButton.innerHTML = "You win! Play again?";
+	} else {
+		startButton.innerHTML = "Game Over! Play again?";
 	}
 }
 
 randomChoreDoorGenerator();
-//Testing gameOver the start button to change with win argument when numClsedDoor reach 0
-// when all dorrs is clicked
+
+// GameOver lose works but logic to win still happen when all door open
