@@ -77,7 +77,9 @@ door3.onclick = () => {
 };
 
 startButton.onclick = () => {
-	startRound();
+	if(!currentlyPlaying){
+		startRound();
+	}
 };
 
 const startRound = () => {
@@ -105,3 +107,5 @@ startRound();
 // GameOver lose works but logic to win still happen when all door open
 // currentPlaying added to fix logic - it prevent from opening the door once gameOver
 // Issues game can be reset if start button is click
+// added the if statement of (!currentlyPlaying) so game can't be reset midway
+// need to add streak and record best streak
