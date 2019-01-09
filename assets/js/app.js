@@ -76,6 +76,20 @@ door3.onclick = () => {
  	};
 };
 
+startButton.onclick = () => {
+	startRound();
+};
+
+const startRound = () => {
+	door1.src = closedDoorPath;
+	door2.src = closedDoorPath;
+	door3.src = closedDoorPath;
+	numCloseDoors = 3;
+	currentlyPlaying = true;
+	startButton.innerHTML = "Good luck!";
+	randomChoreDoorGenerator();
+};
+
 const gameOver = (status) => {
 	if (status === 'win') {
 		startButton.innerHTML = "You win! Play again?";
@@ -85,7 +99,9 @@ const gameOver = (status) => {
 	currentlyPlaying = false;
 }
 
-randomChoreDoorGenerator();
+
+startRound();
 
 // GameOver lose works but logic to win still happen when all door open
 // currentPlaying added to fix logic - it prevent from opening the door once gameOver
+// Issues game can be reset if start button is click
