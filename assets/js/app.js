@@ -10,6 +10,7 @@ let numCloseDoors = 3;
 let openDoor1;
 let openDoor2;
 let openDoor3;
+let currentlyPlaying = true;
 
 const isBot = (door) => {
 	if (door.src === botDoorPath) {
@@ -55,21 +56,21 @@ const randomChoreDoorGenerator = () => {
 
 		
 door1.onclick = () => {
-	if(!isClicked(doorImage1)){
+	if(currentlyPlaying && !isClicked(doorImage1)){
 		doorImage1.src = openDoor1;
   		playDoor(door1);
 	};
 };
 
 door2.onclick = () => {
-	if(!isClicked(doorImage2)){
+	if(currentlyPlaying && !isClicked(doorImage2)){
   		doorImage2.src = openDoor2;
   		playDoor(door2);
   	};
 };
 
 door3.onclick = () => {
-	if(!isClicked(doorImage3)){
+	if(currentlyPlaying && !isClicked(doorImage3)){
 	  	doorImage3.src = openDoor3;
  	  	playDoor(door3);
  	};
@@ -81,8 +82,10 @@ const gameOver = (status) => {
 	} else {
 		startButton.innerHTML = "Game Over! Play again?";
 	}
+	currentlyPlaying = false;
 }
 
 randomChoreDoorGenerator();
 
 // GameOver lose works but logic to win still happen when all door open
+// currentPlaying added to fix logic - it prevent from opening the door once gameOver
