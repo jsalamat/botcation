@@ -2,6 +2,7 @@ let doorImage1 = document.getElementById("door1");
 let doorImage2 = document.getElementById("door2");
 let doorImage3 = document.getElementById("door3");
 let startButton = document.getElementById("start");
+//** src code need to exact path in order for it to work
 let botDoorPath = "https://jsbotcation.herokuapp.com/assets/images/robot.svg";
 let beachDoorPath = "https://jsbotcation.herokuapp.com/assets/images/beach.svg";
 let spaceDoorPath = "https://jsbotcation.herokuapp.com/assets/images/space.svg";
@@ -102,17 +103,22 @@ const startRound = () => {
 const gameOver = (status) => {
 	if (status === 'win') {
 		startButton.innerHTML = "You win! Play again?";
+		getYourScore();
 	} else {
 		startButton.innerHTML = "Game Over! Play again?";
+		score = 0;
+    	currentStreak.innerHTML = score;
 	}
 	currentlyPlaying = false;
 }
 
+const getYourScore = () => {
+  score++;
+  currentStreak.innerHTML = score;
+  if (score > highScore) {
+    highScore = score;
+    bestStreak.innerHTML = highScore;
+  }
+}
 
 startRound();
-
-// GameOver lose works but logic to win still happen when all door open
-// currentPlaying added to fix logic - it prevent from opening the door once gameOver
-// Issues game can be reset if start button is click
-// added the if statement of (!currentlyPlaying) so game can't be reset midway
-// need to add streak and record best streak
