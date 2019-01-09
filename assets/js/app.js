@@ -2,9 +2,9 @@ let doorImage1 = document.getElementById("door1");
 let doorImage2 = document.getElementById("door2");
 let doorImage3 = document.getElementById("door3");
 // *** need to create actual path image file for heroku to work
-let botDoorPath = "./assets/images/robot.svg";
-let beachDoorPath = "./assets/images/beach.svg";
-let spaceDoorPath = "./assets/images/space.svg";
+let botDoorPath = "https://jsbotcation.herokuapp.com/assets/images/robot.svg";
+let beachDoorPath = "https://jsbotcation.herokuapp.com/assets/images/beach.svg";
+let spaceDoorPath = "https://jsbotcation.herokuapp.com/assets/images/space.svg";
 
 
 door1.onclick = () => {
