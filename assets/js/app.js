@@ -11,6 +11,13 @@ let openDoor1;
 let openDoor2;
 let openDoor3;
 let currentlyPlaying = true;
+// Added highscore and beststreak
+let score = 0;
+let highScore = 0;
+let currentStreak = document.getElementById('score-number');
+let bestStreak = document.getElementById('high-score-number');
+currentStreak.innerHTML = score;
+bestStreak.innerHTML = highScore;
 
 const isBot = (door) => {
 	if (door.src === botDoorPath) {
