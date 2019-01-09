@@ -5,10 +5,19 @@ let doorImage3 = document.getElementById("door3");
 let botDoorPath = "https://jsbotcation.herokuapp.com/assets/images/robot.svg";
 let beachDoorPath = "https://jsbotcation.herokuapp.com/assets/images/beach.svg";
 let spaceDoorPath = "https://jsbotcation.herokuapp.com/assets/images/space.svg";
+let closedDoorPath = "https://jsbotcation.herokuapp.com/assets/images/closed_door.svg";
 let numCloseDoors = 3;
 let openDoor1;
 let openDoor2;
 let openDoor3;
+
+const isClicked = (door) => {
+	if(door === closedDoorPath) {
+		return false;
+	} else {
+		return true;
+	}
+};
 
 const playDoor = () => {
 	numCloseDoors--;
@@ -34,18 +43,26 @@ const randomChoreDoorGenerator = () => {
 	}
 };
 
-
+		
 door1.onclick = () => {
-  doorImage1.src = openDoor1;
-  playDoor();
+	if(!isClicked(doorImage1)){
+		doorImage1.src = openDoor1;
+  		playDoor();
+	};
 };
+
 door2.onclick = () => {
-  doorImage2.src = openDoor2;
-  playDoor();
+	if(!isClicked(doorImage2)){
+  		doorImage2.src = openDoor2;
+  		playDoor();
+  	};
 };
+
 door3.onclick = () => {
-  doorImage3.src = openDoor3;
-  playDoor();
+	if(!isClicked(doorImage3)){
+	  	doorImage3.src = openDoor3;
+ 	  	playDoor();
+ 	};
 };
 
 
