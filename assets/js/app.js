@@ -10,9 +10,15 @@ let openDoor1;
 let openDoor2;
 let openDoor3;
 
+const playDoor = () => {
+	numCloseDoors--;
+	if(numCloseDoors === 0) {
+		gameOver();
+	};
+}
+
 const randomChoreDoorGenerator = () => {
 	const choreDoor = Math.floor(Math.random() * numCloseDoors);
-
 	if (choreDoor === 0) {
 		openDoor1 = botDoorPath;
 		openDoor2 = beachDoorPath;
@@ -31,12 +37,15 @@ const randomChoreDoorGenerator = () => {
 
 door1.onclick = () => {
   doorImage1.src = openDoor1;
+  playDoor();
 };
 door2.onclick = () => {
   doorImage2.src = openDoor2;
+  playDoor();
 };
 door3.onclick = () => {
   doorImage3.src = openDoor3;
+  playDoor();
 };
 
 
