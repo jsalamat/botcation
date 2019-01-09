@@ -1,7 +1,7 @@
 let doorImage1 = document.getElementById("door1");
 let doorImage2 = document.getElementById("door2");
 let doorImage3 = document.getElementById("door3");
-// *** need to create actual path image file for heroku to work
+let startButton = document.getElementById("start");
 let botDoorPath = "https://jsbotcation.herokuapp.com/assets/images/robot.svg";
 let beachDoorPath = "https://jsbotcation.herokuapp.com/assets/images/beach.svg";
 let spaceDoorPath = "https://jsbotcation.herokuapp.com/assets/images/space.svg";
@@ -12,7 +12,7 @@ let openDoor2;
 let openDoor3;
 
 const isClicked = (door) => {
-	if(door === closedDoorPath) {
+	if(door.src === closedDoorPath) {
 		return false;
 	} else {
 		return true;
@@ -22,7 +22,7 @@ const isClicked = (door) => {
 const playDoor = () => {
 	numCloseDoors--;
 	if(numCloseDoors === 0) {
-		gameOver();
+		gameOver('win');
 	};
 }
 
@@ -65,9 +65,12 @@ door3.onclick = () => {
  	};
 };
 
+const gameOver = (status) => {
+	if (status === 'win') {
+		startButton.innerHTML = "You win! Play again?";
+	}
+}
 
-//Testing randomChoreDorrGenerator();
-// by either refresh or onclick Good luck
 randomChoreDoorGenerator();
-let start = document.getElementById("start")
-start.onclick = randomChoreDoorGenerator;
+//Testing gameOver the start button to change with win argument when numClsedDoor reach 0
+// when all dorrs is clicked
